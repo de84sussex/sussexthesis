@@ -1,16 +1,16 @@
 library(hexSticker)
 
 # https://pixabay.com/illustrations/graduation-hats-throw-graduation-4906359/
-cap <- "images/happy_cap.png"
+img <- "images/purp.png"
 
-sticker(cap,
-  package = "thesisdown",
+sticker(img,
+  package = "",
   p_family = "Aller_Rg",
-  p_size = 7, p_color = "#5B5040", # p_x = 4, p_y = 1.4,
-  s_x = 1, s_y = .8, s_width = 0.75, s_height = 0.75,
-  h_fill = "#FAECC7", h_color = "#5B5040",
-  filename = "thesisdown_hex.png",
-  url = "thesisdown.rbind.io"
+  p_size = 13, p_color = "#BFBFFF", p_x = 0.985, p_y = 0.99,
+  s_x = 1, s_y = 1.065, s_width = 0.7, s_height = 0.7,
+  h_fill = "transparent", h_color = "#BFBFFF",
+  filename = "sussexthesis_hex_copy.png"
 )
 
 # Final image was revised in Adobe Illustrator
+

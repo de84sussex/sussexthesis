@@ -10,7 +10,7 @@ sussexthesis_skeleton <- function(path = getwd()) {
 #  dir.create(path, recursive = TRUE, showWarnings = FALSE)
 
   # copy 'resources' folder to path
-  resources <- thesisdown_file('rstudio', 'templates', 'project', 'resources')
+  resources <- sussexthesis_file('rstudio', 'templates', 'project', 'resources')
 
   R.utils::copyDirectory(from = resources,
                          to = path,

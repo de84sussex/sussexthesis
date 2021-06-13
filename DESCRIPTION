@@ -2,8 +2,8 @@ Package: sussexthesis
 Title: An updated Sussex R Markdown thesis template using the bookdown package
 Version: 0.0.1
 Authors@R: c(
-    person("Chester", "Ismay", email = "chester.ismay@gmail.com", role = c("cre", "aut")),
-    person("Danielle", "Evans", email = "danielle.evans@sussex.ac.uk", role = "cre"))
+    person("Chester", "Ismay", email = "chester.ismay@gmail.com", role = c("aut")),
+    person("Danielle", "Evans", email = "danielle.evans@sussex.ac.uk", role = "cre", "aut"))
 Description: sussexthesis uses the bookdown package and LaTeX and Word thesis templates from
     Reed College to create a thesis consistent with the requirements of the University of Sussex. This package aims to encourage reproducible research using
     simple Markdown syntax while embedding all of the R code to produce plots

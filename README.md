@@ -3,10 +3,10 @@
 
 # sussexthesis <img src="sussexthesis_hex.png" align="right" width=200 />
 
-This project is a fork of Chester Ismay’s
+This project is based on Chester Ismay’s
 [thesisdown](https://github.com/ismayc/thesisdown) package. The thesis
-template is compatible with the requirements of the University of
-Sussex, and works best when knitting to pdf or gitbook.
+template is designed to be compatible with the requirements of the
+University of Sussex, and works best when knitting to pdf or gitbook.
 
 <!--Currently, the PDF and gitbook versions are fully-functional.  The word and epub versions are developmental. 
 

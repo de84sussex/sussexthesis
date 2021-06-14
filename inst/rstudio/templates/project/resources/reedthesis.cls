@@ -10,7 +10,8 @@
 % May 2005 Patrick Carlisle Table of contents chapter definition
 % 2004-2005 Ben Salzberg (BTS) a variety of tweaks here and in the template
 % 2015 Chester Ismay (CII) modified to create R Markdown template
-%
+% 2021 Danielle Evans modified to create Sussex R Markdown template
+
 % Oddities:
 %
 %   We *ASSUME* that any time \cleardoublepage is called
@@ -104,24 +105,25 @@
 % This gives us rules below the headers
 \AtBeginDocument{%
   \fancyhf{}
-  \fancyhead[LE,RO]{\thepage}
+%  \fancyhead[LE,RO]{\thepage}
 %  \fancyhead[RE]{\slshape \leftmark}
 %  \fancyhead[LO]{\slshape \rightmark}
 %	The above makes your headers in all caps. If you would like different headers, choose one of the following options (be sure to remove the % symbol from both the right and left headers):
-	 \fancyhead[RE]{\slshape \nouppercase \leftmark} % This makes the headers on the RIGHT side pages be italic and use lowercase With Capitals When Specified.
-	\fancyhead[LO]{\slshape \nouppercase \rightmark} % This does the same thing to the LEFT side pages
+%	 \fancyhead[RE]{\slshape \nouppercase \leftmark} % This makes the headers on the RIGHT side pages be italic and use lowercase With Capitals When Specified.
+%	\fancyhead[LO]{\slshape \nouppercase \rightmark} % This does the same thing to the LEFT side pages
 %	or
 %	\fancyhead[RE]{\scshape \leftmark} % The RIGHT headers will be in small caps.
 %	\fancyhead[LO]{\scshape \rightmark} %  And so will the LEFT headers
   \pagestyle{fancy}
 
+
 % Psych majors: You do not need the following six lines, as it conflicts with apacite, so comment them out.
-  \let\oldthebibliography=\thebibliography
-  \let\endoldthebibliography=\endthebibliography
-  \renewenvironment{thebibliography}[1]{
-    \oldthebibliography{#1}
-    \addcontentsline{toc}{chapter}{\bibname}
-  }{\endoldthebibliography}
+%  \let\oldthebibliography=\thebibliography
+%  \let\endoldthebibliography=\endthebibliography
+%  \renewenvironment{thebibliography}[1]{
+%    \oldthebibliography{#1}
+%    \addcontentsline{toc}{chapter}{\bibname}
+%  }{\endoldthebibliography}
  %%%%%% end of things for psych majors to comment out
 
   \let\oldtheindex=\theindex
@@ -136,7 +138,7 @@
 \let\RToldchapter\chapter
 \renewcommand{\chapter}{\if@openright\RTcleardoublepage
 		    \else\clearpage\fi
-		    \thispagestyle{empty}%
+		    \thispagestyle{plain}%
 		    \global\@topnum\z@
 		    \@afterindentfalse
 		    \secdef\@chapter\@schapter}
@@ -167,7 +169,7 @@
 
 \newcommand{\RTcleardoublepage}{
 	\clearpage\if@twoside \ifodd\c@page\else
-	\thispagestyle{empty}\hbox{}\newpage
+	\thispagestyle{plain}\hbox{}\newpage
 	\if@twocolumn\hbox{}\newpage\fi\fi\fi}
 
 \let\RToldcleardoublepage\cleardoublepage
@@ -196,20 +198,6 @@
 \def\@degree{\@latex@warning@no@line{No \noexpand\degree given}}
 \def\institution#1{\gdef \@institution{#1}}
 \def\@institution{\@latex@warning@no@line{No \noexpand\institution given}}
-\def\division#1{\gdef \@division{#1}}
-\def\@division{\@latex@warning@no@line{No \noexpand\division given}}
-\def\department#1{\gdef \@department{#1}}
-\def\@department{\@latex@warning@no@line{No \noexpand\department given}}
-\def\thedivisionof#1{\gdef \@thedivisionof{#1}}
-\def\@thedivisionof{The Division of}
-\def\approvedforthe#1{\gdef \@approvedforthe{#1}}
-\def\@approvedforthe{Division}
-\def\advisor#1{\gdef \@advisor{#1}}
-\def\@advisor{\@latex@warning@no@line{No \noexpand\advisor given}}
-\def\altadvisor#1{\gdef \@altadvisor{#1} \@altadvisortrue}
-\global\let\@altadvisor\@empty
-\newif\if@altadvisor
-\@altadvisorfalse
 
 \renewcommand\l@chapter[2]{%
   \ifnum \c@tocdepth >\m@ne
@@ -230,27 +218,6 @@
   \fi}
 
 %%% Added by CII
-\newenvironment{acknowledgements}{%
-  \if@twocolumn
-    \@restonecoltrue\onecolumn
-  \else
-    \@restonecolfalse
-  \fi
-  \chapter*{Acknowledgements}
-  \fontsize{12}{14}\selectfont
-}{\clearpage \if@restonecol\twocolumn\fi}%
-
-\newenvironment{preface}{%
-  \if@twocolumn
-    \@restonecoltrue\onecolumn
-  \else
-    \@restonecolfalse
-  \fi
-  \chapter*{Preface}
-  \fontsize{12}{14}\selectfont
-}{\clearpage \if@restonecol\twocolumn\fi}%
-% End of CII add
-
 \newenvironment{abstract}{%
   \if@twocolumn
     \@restonecoltrue\onecolumn
@@ -261,15 +228,28 @@
   \fontsize{12}{14}\selectfont
 }{\clearpage \if@restonecol\twocolumn\fi}%
 
-\newenvironment{dedication}{%
+\newenvironment{acknowledgements}{%
   \if@twocolumn
     \@restonecoltrue\onecolumn
   \else
     \@restonecolfalse
   \fi
-  \chapter*{Dedication}
+  \chapter*{Acknowledgements}
   \fontsize{12}{14}\selectfont
 }{\clearpage \if@restonecol\twocolumn\fi}%
+
+\newenvironment{declaration}{%
+  \if@twocolumn
+    \@restonecoltrue\onecolumn
+  \else
+    \@restonecolfalse
+  \fi
+  \chapter*{Declaration}
+  \fontsize{12}{14}\selectfont
+}{\clearpage \if@restonecol\twocolumn\fi}%
+% End of CII add
+
+
 
 
 \ifx\@pdfoutput\@undefined
@@ -293,55 +273,25 @@
   \let \footnote \thanks
 
   \baselineskip = 1.4\baselineskip
-  \setbox0=\hbox{of the Requirements for the Degree}
+  \setbox0=\hbox{widthcheck widthcheck widthcheck widthcheck widthcheck widthcheck widthcheck width}
 
   \begin{center}
     \setcounter{page}{1}
     \null\vfil
     {\fontsize{12}{14}\selectfont \@title}
     \vfil
-    \centerline{\hbox to \wd0 {\hbox{}\hrulefill\hbox{}}}
-    \vfil
-    A Thesis \\
-    Presented to \\
-    \@thedivisionof \ \@division \\
-    \@institution
-    \vfil
-    \centerline{\hbox to \wd0 {\hbox{}\hrulefill\hbox{}}}
-    \vfil
-    In Partial Fulfillment \\
-    of the Requirements for the Degree \\
-    \@degree
-    \vfil
-    \centerline{\hbox to \wd0 {\hbox{}\hrulefill\hbox{}}}
-    \bigskip
-    \centerline{}
-    \bigskip
     {\fontsize{12}{14}\selectfont \lineskip .75em
     \begin{tabular}[t]{c}%
       \@author
     \end{tabular}\par}
-    \vskip 1.5em
+    \vfil
+    Thesis submitted for the degree of \@degree
+    \vfil
+    \@institution
+    \vfil
     {\fontsize{12}{14}\selectfont \@date \par}
   \end{center}\par
   \end{titlepage}
-
-%% Approved for the division page
-  \cleardoublepage
-  {\fontsize{12}{14}
-  \setbox0=\hbox{Approved for the \@approvedforthe}
-  \thispagestyle{empty}
-  \null\vfil		% just below center of page
-  \par\vskip 6cm	% below center, not center
-  \centerline{\copy0}	% approved
-  \centerline{(\@department)} %major
-  \vskip 1cm		%space to sign
-  \centerline{\makebox[\wd0][c]{\hrulefill}
-	\if@altadvisor \makebox[.5in]{} \makebox[\wd0][c]{\hrulefill} \fi}
-  \centerline{\makebox[\wd0][c]{\@advisor}
-	\if@altadvisor \makebox[.5in]{} \makebox[\wd0][c]{\@altadvisor} \fi}
-  \par\vfil\null}
-  \cleardoublepage
   }
 }
 
@@ -354,6 +304,5 @@
 %\newcommand{\Keywords}[1]{\def\@Keywords{#1}}
 %\newcommand{\Plainkeywords}[1]{\def\@Plainkeywords{#1}}
 \newcommand{\Acknowledgements}[1]{\def\@Acknowledgements{#1}}
-\newcommand{\Dedication}[1]{\def\@Dedication{#1}}
-\newcommand{\Preface}[1]{\def\@Preface{#1}}
+\newcommand{\Declaration}[1]{\def\@Declaration{#1}}
 % End of CII add

@@ -1,5 +1,5 @@
 
-# Chapter 1: Chapter 1 Title
+# Chapter 1 Title
 
 <!-- You can write in this document like a normal Rmd -->
 

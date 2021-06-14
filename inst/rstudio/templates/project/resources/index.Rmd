@@ -3,7 +3,7 @@ title: 'My Thesis Title'
 author: 'Your R. Name'
 date: 'May 20xx'
 institution: 'University of Sussex'
-degree: 'Thesis submitted for the degree of Doctor of Philosophy'
+degree: 'Doctor of Philosophy'
 knit: bookdown::render_book
 site: bookdown::bookdown_site
 
@@ -43,13 +43,12 @@ bibliography: bib/thesis.bib
 # Download your specific csl file and refer to it in the line below, apa is the default.
 csl: csl/apa.csl
 
-# for list of tables (lot) and list of figures (lof)
-lot: true
-lof: true
-
 # To include other LaTeX packages uncomment and add below
 #header-includes:
 
+# for list of tables (lot) and list of figures (lof)
+lot: true
+lof: true
 ---
 
 <!--

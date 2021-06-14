@@ -24,7 +24,7 @@
 %% Preamble
 %%
 % \documentclass{<something>} must begin each LaTeX document
-\documentclass[12pt,twoside]{reedthesis}
+\documentclass[12pt,oneside]{reedthesis}
 % Packages are extensions to the basic LaTeX functions. Whatever you
 % want to typeset, there is probably a package out there for it.
 % Chemistry (chemtex), screenplays, you name it.
@@ -157,6 +157,10 @@ $endif$
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
+\Abstract{
+$abstract$
+}
+
 \Acknowledgements{
 $acknowledgements$
 }
@@ -165,9 +169,7 @@ $acknowledgements$
 $declaration$
 }
 
-\Abstract{
-$abstract$
-}
+
 
 $for(header-includes)$
 	$header-includes$
@@ -180,13 +182,15 @@ $endfor$
 
 \begin{document}
 
+
+
+\frontmatter % this stuff will be roman-numbered
+\pagestyle{empty} % this removes page numbers from the frontmatter
+
 % Everything below added by CII
 $if(title)$
   \maketitle
 $endif$
-
-\frontmatter % this stuff will be roman-numbered
-\pagestyle{empty} % this removes page numbers from the frontmatter
 
 $if(abstract)$
   \begin{abstract}
@@ -224,6 +228,8 @@ $endif$
 
 \mainmatter % here the regular arabic numbering starts
 \pagestyle{fancyplain} % turns page numbering back on
+
+
 
 $body$
 

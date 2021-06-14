@@ -34,7 +34,6 @@
 \usepackage{amsmath}
 \usepackage{amssymb,amsthm}
 \usepackage{longtable,booktabs,setspace}
-\usepackage{chemarr} %% Useful for one reaction arrow, useless if you're not a chem major
 \usepackage[hyphens]{url}
 % Added by CII
 \usepackage{hyperref}
@@ -80,19 +79,17 @@ $endif$
 \author{$author$}
 % The month and year that you submit your FINAL draft TO THE LIBRARY (May or December)
 \date{$date$}
-\division{$division$}
-\advisor{$advisor$}
 \institution{$institution$}
 \degree{$degree$}
 %If you have two advisors for some reason, you can use the following
 % Uncommented out by CII
-$if(altadvisor)$
-\altadvisor{$altadvisor$}
-$endif$
+%$if(altadvisor)$
+%\altadvisor{$altadvisor$}
+%$endif$
 % End of CII addition
 
 %%% Remember to use the correct department!
-\department{$department$}
+%\department{$department$}
 % if you're writing a thesis in an interdisciplinary major,
 % uncomment the line below and change the text as appropriate.
 % check the Senior Handbook if unsure.
@@ -164,12 +161,8 @@ $endif$
 $acknowledgements$
 }
 
-\Dedication{
-$dedication$
-}
-
-\Preface{
-$preface$
+\Declaration{
+$declaration$
 }
 
 \Abstract{
@@ -195,17 +188,24 @@ $endif$
 \frontmatter % this stuff will be roman-numbered
 \pagestyle{empty} % this removes page numbers from the frontmatter
 
+$if(abstract)$
+  \begin{abstract}
+    $abstract$
+  \end{abstract}
+$endif$
+
 $if(acknowledgements)$
   \begin{acknowledgements}
     $acknowledgements$
   \end{acknowledgements}
 $endif$
 
-$if(preface)$
-  \begin{preface}
-    $preface$
-  \end{preface}
+$if(declaration)$
+  \begin{declaration}
+    $declaration$
+  \end{declaration}
 $endif$
+
 
 $if(toc)$
   \hypersetup{linkcolor=$if(toccolor)$$toccolor$$else$black$endif$}
@@ -220,18 +220,6 @@ $endif$
 
 $if(lof)$
   \listoffigures
-$endif$
-
-$if(abstract)$
-  \begin{abstract}
-    $abstract$
-  \end{abstract}
-$endif$
-
-$if(dedication)$
-  \begin{dedication}
-    $dedication$
-  \end{dedication}
 $endif$
 
 \mainmatter % here the regular arabic numbering starts

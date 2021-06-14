@@ -6,7 +6,7 @@ The bib chunk below must go last in this document according to how R Markdown re
 
 <!-- 
 If you'd like to change the name of the bibliography to something else,
-delete "References" and replace it.
+delete "References" below and replace it with the new name. 
 -->
 
 # References {-}
@@ -28,7 +28,8 @@ to be removed for styles that don't require the hanging indent.
 
 
 <!--
-This is just for testing with more citations for the bibliography at the end.  Add other entries into the list here if you'd like them to appear in the bibliography even if they weren't explicitly cited in the document.
+Add other entries into the list below if you'd like them to appear in the bibliography even if they weren't explicitly cited in the document. You can delete the below if you do not wish to include additional references. 
+
 -->
 
 ---

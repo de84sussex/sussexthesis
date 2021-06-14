@@ -1,6 +1,6 @@
 %
 % This file is copyright (C) 2003 Sam Noble. It may be modified so long
-% as my name is not removed and the modifier adds his name to the file.
+% as my name is not removed and the modifier adds his OR HER name to the file.
 % Redistribution permitted.
 %
 % 27 Jan 2004	Sam Noble	Removed tocbibind dependency.

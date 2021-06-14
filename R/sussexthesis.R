@@ -13,3 +13,4 @@
 #' @docType package
 #' @name sussexthesis
 "_PACKAGE"
+

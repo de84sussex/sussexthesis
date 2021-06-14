@@ -105,7 +105,7 @@
 % This gives us rules below the headers
 \AtBeginDocument{%
   \fancyhf{}
-%  \fancyhead[LE,RO]{\thepage}
+  \fancyfoot[C]{\thepage}
 %  \fancyhead[RE]{\slshape \leftmark}
 %  \fancyhead[LO]{\slshape \rightmark}
 %	The above makes your headers in all caps. If you would like different headers, choose one of the following options (be sure to remove the % symbol from both the right and left headers):

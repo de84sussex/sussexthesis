@@ -7,105 +7,123 @@ degree: 'Doctor of Philosophy'
 knit: bookdown::render_book
 site: bookdown::bookdown_site
 
-# The next two lines allow you to change the spacing in your thesis. You can 
-# switch out \onehalfspacing with \singlespacing or \doublespacing, if desired.
-header-includes:
-    - \usepackage{setspace}\onehalfspacing
 
 # This will automatically install the {remotes} package and {sussexthesis}
-# Change this to FALSE if you'd like to install them manually on your own.
+# Change this to FALSE if you'd like to install them manually on your own
 params:
   'Install needed packages for {sussexthesis}': True
   
 # Remove the hashtag to specify which version of output you would like.
-# Can only choose one at a time.
+# You can only choose one at a time, thesis_pdf is the recommended & default output 
+# thesis_word does not comply with sussex/apa formatting
+# & is only included for proofing purposes 
 output:
   sussexthesis::thesis_pdf: default 
-#  sussexthesis::thesis_gitbook: default         
 #  sussexthesis::thesis_word: default
-#  sussexthesis::thesis_epub: default
 
-# If you are creating a PDF you'll need to write your preliminary content 
-# (e.g., abstract, acknowledgements) below. 
+
+# Write your preliminary content (e.g., abstract, acknowledgements) below
 
 abstract: |
-  Here is my abstract.
+  Write your amazing abstract here.
 
 acknowledgements: |
-  I want to thank a few people. 
+  Thank all your **favourite** people here. 
 
 declaration: |
-  Type your declaration here. 
+  For a 'papers style' thesis, write your declaration here. 
 
 # Specify the location of the bibliography below
 bibliography: bib/thesis.bib
 
-# Download your specific csl file and refer to it in the line below, apa is the default.
+# Download your specific csl file and refer to it in the line below, apa is the default, & this does not need to be changed unless you're using a different style
 csl: csl/apa.csl
 
 # To include other LaTeX packages uncomment and add below
 #header-includes:
 
-# for list of tables (lot) and list of figures (lof)
-lot: true
-lof: true
+# for a list of tables (lot) and list of figures (lof) to appear set the below to true
+lot: false
+lof: false
 ---
 
 <!--
-Above is the YAML (YAML Ain't Markup Language) header that includes a lot of 
-metadata used to produce the document.  Be careful with spacing in this header!
 
-If you'd prefer to not include acknowledgements, for example, simply delete the section entirely, or silence them (add # before each line). 
+Above is the YAML header that includes a lot of metadata used to produce the document. Be careful with spacing in this header! 
 
-If you have other LaTeX packages you would like to include, delete the # before header-includes and list the packages after hyphens on new lines.
+Very few options in the YAML *need* to be changed, such as adding the title, author, date, abstract, acknowledgements, & declaration (for a papers style thesis)
 
-If you'd like to include a comment that won't be produced in your resulting file enclose it in a block like this.
+If you'd prefer to not include some sections, such as acknowledgements for example, you can simply delete the section entirely, or you can silence them by adding # before each line. 
 
-If you receive a duplicate label error after knitting, make sure to delete the index.Rmd file and then knit again.
+For more advanced users, if you have other LaTeX packages you would like to include, delete the # before header-includes and list the packages after hyphens on new lines.
+
 -->
 
-```{r include_packages, include=FALSE}
-# This chunk ensures that the sussexthesis package is
-# installed and loaded. This sussexthesis package includes
-# the template files for the thesis.
-if (!require(remotes)) {
-  if (params$`Install needed packages for {sussexthesis}`) {
-    install.packages("remotes", repos = "https://cran.rstudio.com")
-  } else {
-    stop(
-      paste('You need to run install.packages("remotes")",
-            "first in the Console.')
-    )
-  }
-}
-if (!require(sussexthesis)) {
-  if (params$`Install needed packages for {sussexthesis}`) {
-    remotes::install_github("de84sussex/sussexthesis")
-  } else {
-    stop(
-      paste(
-        "You need to run",
-        'remotes::install_github("de84sussex/sussexthesis")',
-        "first in the Console."
-      )
-    )
-  }
-}
-library(sussexthesis)
-# Set how wide the R output will go
-options(width = 70)
-```
+
+<!-- USER GUIDE
+
+The remainder of this document is a user guide for the sussexthesis package, describing how you can get from the files in this R project, to a beautiful, finished thesis! Currently, the .word version has no formatting/templates behind it, and so does not conform to Sussex or APA guidelines, so the .pdf version is the recommended output.
 
 
-<!-- The {.unnumbered} option here means that the introduction will be 
-"Chapter 0." You can also use {-} for no numbers on chapters.
+SETUP
+
+You should see in this newly created R project, that you have a number of files & folders. Firstly, there is a _book folder, this folder will eventually contain your knitted finished thesis (more detail on this below). There are also some .Rmd chapters (i.e., 01-chap1.Rmd). You should write each of your chapters within these files, adding/deleting chapters where necessary depending on the structure of your thesis. Notice that each chapter begins with a number corresponding to where it should be placed in the thesis. Ensure when adding/deleting chapters that these numbers are corrected to reflect the order you want your chapters to be presented in. 
+
+There are three additional files which affect the formatting & setup of your thesis: _bookdown.yml, reedthesis.cls & template.tex. Unless you wish to change something major, these files should be left alone. Similarly, the 99-references.Rmd can also be left alone unless you wish to edit the name of your references section, or to add references that are not cited in the main text (more info on referencing below). 
+
+To compile your thesis from multiple chapters into one document, you should knit *this* index.Rmd file. The first time you knit this file, it is likely to take a long time before the output is shown, this is because several LaTeX packages will be installed for the first time (if you dont already have them..) which can be a long-ish process, but it should give you plenty of time to take a tea break (or two) away from your desk :) 
+
+After knitting, depending on your RStudio settings, the resulting file should appear. This is the complete .pdf version of your thesis, containing any chapters you have included, which can be found in the _book folder of your R project. 
+
+To check everything is working OK before you modify anything in this R project, you can knit this file now, continue reading the rest of the guide below, go make some tea, & probably have time to fly around the world twice before the LaTeX install will have finished ready for you to start working on your chapters!
+
+
+WRITING YOUR CHAPTERS 
+
+Just like in any other .Rmd files you have likely worked with before, you can use markdown and R code chunks within the chapters of your thesis. This makes it nice & easy to analyse data and write up your findings within one document. The chapters are already empty for you to begin writing. 
+
+When using this thesis template, there are some things to be aware of: 
+
+- avoid using duplicate code chunk names in different chapters
+
+- remember to set code chunk display options appropriately (e.g. include = F)
+
+- tables work differently when knitting to a .pdf or .word doc, so be aware of this if switching between the two for proofing purposes
+
+- the different chapter titles in the contents table & in the whole document are generated from the chapter titles written in the chapter .Rmds, make sure the number of #s to denote different heading levels is correct or some extra chapters might appear in your knitted doc
+
+- Most of the formatting of this document is applied automatically, but this may not always be what you want... To add text formatting, you can use *markdown* just like in any normal .Rmd, You can also venture into the template.tex & reedthesis.cls files & edit/add stuff there or you can more easily use LaTeX commands within the .Rmd you are wanting to change (such as using \newpage to create a newpage) I, myself, am not a pro, but a lot can be learned from searching online..
+
+
+REFERENCING 
+
+To reference sources in this template, the setup is slightly different to what you will have likely used previously. Instead, here we use BibTeX references which we include within a .bib file that we specify in the YAML of our index.Rmd (see the YAML above). There are many pros to using this approach in that you dont ever have to worry again about formatting your in-text citations to APA style, and that your reference list is automatically generated and formatted (amazing right?!)
+
+To add references, you should add BibTeX references to the thesis.bib file contained within the bib folder. These references can usually be easily found on article pages, or with google scholar, and look something like this:
+
+
+  @article{evans2020internalizing,
+    title={Internalizing symptoms and working memory as predictors of mathematical attainment   trajectories across the primary--secondary education transition},
+    author={Evans, Danielle and Gaysina, Darya and Field, Andy P},
+    journal={Royal Society Open Science},
+    volume={7},
+    number={5},
+    pages={191433},
+    year={2020},
+    publisher={The Royal Society}
+  }
+
+
+To then cite references in the text of your .Rmd, simply give the label of the reference following the @ i.e.,
+
+  @evans2020internalizing
+
+will cite the reference in your thesis.bib file matching the evans2020internalizing label. The reference will also be included within your bibliography section, automatically formatted in APA style.
+
+One thing I learned when using this method for my own thesis, is that it would have been much better to add these references & to have made sure they were complete (i.e., with no page numbers missing) as I wrote each paragraph/section/chapter, this will save you checking through hundreds of them at the end, & searching for the missing information which might get you temporarily banned from using google like I did :)
+
+
+Writing a thesis is hard, writing a pretty thesis in R is even harder, but hopefully this sussexthesis package makes that process slightly less painful :)  
+
 -->
-
-# Introduction {.unnumbered}
-
-Welcome to the _R Markdown_ thesis template. This template is modified from (and in many places copied directly from) the Reed College LaTeX template, but hopefully it will provide a nicer interface for those that have never used TeX or LaTeX before.  Using _R Markdown_ will also allow you to easily keep track of your analyses in **R** chunks of code, with the resulting plots and output included as well.  The hope is this _R Markdown_ template gets you in the habit of doing reproducible research, which benefits you long-term as a researcher, but also will greatly help anyone that is trying to reproduce or build onto your results down the road.
-
-Hopefully, you won't have much of a learning period to go through and you will reap the benefits of a nicely formatted thesis.  The use of LaTeX in combination with _Markdown_ is more consistent than the output of a word processor, much less prone to corruption or crashing, and the resulting file is smaller than a Word file. While you may have never had problems using Word in the past, your thesis is likely going to be about twice as large and complex as anything you've written before, taxing Word's capabilities.  After working with _Markdown_ and **R** together for a few weeks, we are confident this will be your reporting style of choice going forward.
-
-_R Markdown_ creates a simple and straightforward way to interface with the beauty of LaTeX.  Packages have been written in **R** to work directly with LaTeX to produce nicely formatting tables and paragraphs. In addition to creating a user friendly interface to LaTeX, _R Markdown_ also allows you to read in your data, to analyze it and to visualize it using **R** functions, and also to provide the documentation and commentary on the results of your project.  Further, it allows for **R** results to be passed inline to the commentary of your results.  You'll see more on this later.  
 

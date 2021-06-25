@@ -2,38 +2,19 @@
 % for the document class was done by Sam Noble (SN), as well as this
 % template. Later comments etc. by Ben Salzberg (BTS). Additional
 % restructuring and APA support by Jess Youngberg (JY).
-% Your comments and suggestions are more than welcome; please email
-% them to cus@reed.edu
-%
-% See https://www.reed.edu/cis/help/LaTeX/index.html for help. There are a
-% great bunch of help pages there, with notes on
-% getting started, bibtex, etc. Go there and read it if you're not
-% already familiar with LaTeX.
-%
-% Any line that starts with a percent symbol is a comment.
-% They won't show up in the document, and are useful for notes
-% to yourself and explaining commands.
-% Commenting also removes a line from the document;
-% very handy for troubleshooting problems. -BTS
 
-% As far as I know, this follows the requirements laid out in
-% the 2002-2003 Senior Handbook. Ask a librarian to check the
-% document before binding. -SN
 
 %%
 %% Preamble
 %%
-% \documentclass{<something>} must begin each LaTeX document
+
 \documentclass[12pt,oneside]{reedthesis}
-% Packages are extensions to the basic LaTeX functions. Whatever you
-% want to typeset, there is probably a package out there for it.
-% Chemistry (chemtex), screenplays, you name it.
-% Check out CTAN to see: https://www.ctan.org/
-%%
+
 \usepackage{graphicx,latexsym}
 \usepackage{amsmath}
 \usepackage{amssymb,amsthm}
 \usepackage{longtable,booktabs,setspace}
+\doublespacing
 \usepackage[hyphens]{url}
 % Added by CII
 \usepackage{hyperref}
@@ -45,60 +26,33 @@
 % End of CII addition
 \usepackage{rotating}
 
-% Next line commented out by CII
-%%% \usepackage{natbib}
-% Comment out the natbib line above and uncomment the following two lines to use the new
-% biblatex-chicago style, for Chicago A. Also make some changes at the end where the
-% bibliography is included.
-%\usepackage{biblatex-chicago}
-%\bibliography{thesis}
+\renewcommand{\headrulewidth}{0pt}
 
 
-% Added by CII (Thanks, Hadley!)
 % Use ref for internal links
 \renewcommand{\hyperref}[2][???]{\autoref{#1}}
 \def\chapterautorefname{Chapter}
 \def\sectionautorefname{Section}
 \def\subsectionautorefname{Subsection}
-% End of CII addition
 
-% Added by CII
 \usepackage{caption}
 \captionsetup{width=5in}
-% End of CII addition
 
-% \usepackage{times} % other fonts are available like times, bookman, charter, palatino
+% choose your font, other fonts are available like times, bookman, charter, palatino
+\usepackage{mathptmx}
 
 % Syntax highlighting #22
 $if(highlighting-macros)$
   $highlighting-macros$
 $endif$
 
-% To pass between YAML and LaTeX the dollar signs are added by CII
+
 \title{$title$}
 \author{$author$}
-% The month and year that you submit your FINAL draft TO THE LIBRARY (May or December)
 \date{$date$}
 \institution{$institution$}
 \degree{$degree$}
-%If you have two advisors for some reason, you can use the following
-% Uncommented out by CII
-%$if(altadvisor)$
-%\altadvisor{$altadvisor$}
-%$endif$
-% End of CII addition
 
-%%% Remember to use the correct department!
-%\department{$department$}
-% if you're writing a thesis in an interdisciplinary major,
-% uncomment the line below and change the text as appropriate.
-% check the Senior Handbook if unsure.
-%\thedivisionof{The Established Interdisciplinary Committee for}
-% if you want the approval page to say "Approved for the Committee",
-% uncomment the next line
-%\approvedforthe{Committee}
-
-% Added by CII
 %%% Copied from knitr
 %% maxwidth is the original width if it's less than linewidth
 %% otherwise use linewidth (to make sure the graphics do not exceed the margin)
@@ -174,28 +128,47 @@ $declaration$
 $for(header-includes)$
 	$header-includes$
 $endfor$
-% End of CII addition
+
+
+\linespread{2}
+
+\usepackage{titlesec}
+
+\titleformat{\chapter}[display]
+  {\normalsize\bfseries\filcenter}{\chaptertitlename\ \thechapter}{20pt}{\normalsize}
+\titlespacing*{\chapter}
+  {0pt}{0pt}{20pt}
+
+\titleformat*{\section}{\normalsize\bfseries}
+\titleformat*{\subsection}{\normalsize\bfseries}
+\titleformat*{\subsubsection}{\normalsize\bfseries}
+\titleformat*{\paragraph}{\normalsize\bfseries}
+\titleformat*{\subparagraph}{\normalsize\bfseries}
+
 %%
 %% End Preamble
 %%
 %
 
+
 \begin{document}
-
-
 
 \frontmatter % this stuff will be roman-numbered
 \pagestyle{empty} % this removes page numbers from the frontmatter
 
-% Everything below added by CII
+
 $if(title)$
   \maketitle
 $endif$
 
+\raggedright
+\pagestyle{plain} % this removes page numbers from the frontmatter
+
+
 $if(abstract)$
-  \begin{abstract}
+\begin{abstract}
     $abstract$
-  \end{abstract}
+\end{abstract}
 $endif$
 
 $if(acknowledgements)$
@@ -213,8 +186,8 @@ $endif$
 
 $if(toc)$
   \hypersetup{hidelinks}
-  \setcounter{secnumdepth}{$toc-depth$}
-  \setcounter{tocdepth}{$toc-depth$}
+  \setcounter{secnumdepth}{0}
+  \setcounter{tocdepth}{1}
   \tableofcontents
 $endif$
 
@@ -228,7 +201,6 @@ $endif$
 
 \mainmatter % here the regular arabic numbering starts
 \pagestyle{fancyplain} % turns page numbering back on
-
 
 
 $body$

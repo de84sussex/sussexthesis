@@ -1,4 +1,9 @@
 <!--
+You generally don't need to edit this file, but the option is there if you wish :)
+-->
+
+
+<!--
 The bib chunk below must go last in this document according to how R Markdown renders.  More info is at http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html
 -->
 
@@ -28,11 +33,11 @@ to be removed for styles that don't require the hanging indent.
 
 
 <!--
-Add other entries into the list below if you'd like them to appear in the bibliography even if they weren't explicitly cited in the document. You can delete the below if you do not wish to include additional references. 
+Add other entries into the list below if you'd like them to appear in the bibliography even if they weren't explicitly cited in the document. For them to appear, you must delete the beginning <! before the 3 hyphens, and the ending > after the three full stops.
 
 -->
 
----
+<!---
 nocite: | 
   @angel2000, @angel2001, @angel2002a
-...
+...>

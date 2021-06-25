@@ -1,6 +1,6 @@
 %
 % This file is copyright (C) 2003 Sam Noble. It may be modified so long
-% as my name is not removed and the modifier adds his OR HER name to the file.
+% as my name is not removed and the modifier adds his *OR HER* name to the file.
 % Redistribution permitted.
 %
 % 27 Jan 2004	Sam Noble	Removed tocbibind dependency.
@@ -176,13 +176,22 @@
 \renewcommand{\cleardoublepage}{\RTcleardoublepage}
 
 % adjust margins for binding  (changed 2007-04-24 tgp)
-\setlength{\oddsidemargin}{.5in}
-\setlength{\evensidemargin}{0in}
-\setlength{\textwidth}{6.0in}
-\setlength{\textheight}{9.0in}
-\setlength\topmargin{0in}
-\addtolength\topmargin{-\headheight}
-\addtolength\topmargin{-\headsep}
+%\setlength{\oddsidemargin}{.5in}
+%\setlength{\evensidemargin}{0in}
+%\setlength{\textwidth}{6.0in}
+%\setlength{\textheight}{9.0in}
+%\setlength\topmargin{0in}
+%\addtolength\topmargin{-\headheight}
+%addtolength\topmargin{-\headsep}
+
+\usepackage{geometry}
+ \geometry{a4paper,
+ left=4cm,
+ top=2.5cm,
+ right=2cm,
+ bottom=4cm
+ }
+
 
 %\setlength{\oddsidemargin}{.6in}
 %\setlength{\evensidemargin}{0in}
@@ -280,7 +289,7 @@
     \null\vfil
     {\fontsize{12}{14}\selectfont \@title}
     \vfil
-    {\fontsize{12}{14}\selectfont \lineskip .75em
+    {\fontsize{12}{14}\selectfont \lineskip 1.4em
     \begin{tabular}[t]{c}%
       \@author
     \end{tabular}\par}

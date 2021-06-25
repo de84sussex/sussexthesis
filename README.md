@@ -6,7 +6,7 @@
 This project is based on Chester Ismay’s
 [thesisdown](https://github.com/ismayc/thesisdown) package. The thesis
 template is designed to be compatible with the requirements of the
-University of Sussex, and works best when knitting to pdf or gitbook.
+University of Sussex, and works best when knitting to pdf.
 
 <!--Currently, the PDF and gitbook versions are fully-functional.  The word and epub versions are developmental. 
 

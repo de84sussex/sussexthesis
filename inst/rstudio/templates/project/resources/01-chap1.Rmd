@@ -16,6 +16,6 @@ when writing your chapters, be cautious of using the correct heading level:
 
 ##### is used for level 4 headings 
 
-##### is used for level 5 headings 
+###### is used for level 5 headings 
 
 -->

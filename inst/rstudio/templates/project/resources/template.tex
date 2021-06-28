@@ -1,15 +1,20 @@
-% This is the Reed College LaTeX thesis template. Most of the work
-% for the document class was done by Sam Noble (SN), as well as this
-% template. Later comments etc. by Ben Salzberg (BTS). Additional
-% restructuring and APA support by Jess Youngberg (JY).
+% This is the Sussex LaTeX thesis template, modified from the Reed College LaTeX thesis template. Most of the work for the document class was done by Sam Noble (SN), as well as this template. Later comments etc. by Ben Salzberg (BTS). Additional restructuring and APA support by Jess Youngberg (JY) & Danielle Evans.
 
 
 %%
 %% Preamble
 %%
 
-\documentclass[12pt,oneside]{reedthesis}
+\documentclass[12pt,oneside]{sussexthesis}
+\usepackage{geometry}
+ \geometry{a4paper,
+ left=4cm,
+ top=2.5cm,
+ right=2cm,
+ bottom=2.5cm
+ }
 
+\usepackage{fancyhdr}
 \usepackage{graphicx,latexsym}
 \usepackage{amsmath}
 \usepackage{amssymb,amsthm}
@@ -27,6 +32,37 @@
 \usepackage{rotating}
 
 \renewcommand{\headrulewidth}{0pt}
+
+
+
+% DE
+% Table formatting
+\usepackage{lscape}
+% \usepackage[counterclockwise]{rotating}   % Landscape page setup for large tables
+\usepackage{multirow}		% Table styling
+\usepackage{tabularx}		% Control Column width
+\usepackage[flushleft]{threeparttable}	% Allows for three part tables with a specified notes section
+\usepackage{threeparttablex}            % Lets threeparttable work with longtable
+
+% Create new environments so endfloat can handle them
+% \newenvironment{ltable}
+%   {\begin{landscape}\begin{center}\begin{threeparttable}}
+%   {\end{threeparttable}\end{center}\end{landscape}}
+
+% DE changes table spacing
+\renewcommand{\arraystretch}{1.5}
+
+\newenvironment{lltable}{\begin{landscape}\begin{center}\begin{ThreePartTable}}{\end{ThreePartTable}\end{center}\end{landscape}}
+
+
+% Enables adjusting longtable caption width to table width
+% Solution found at http://golatex.de/longtable-mit-caption-so-breit-wie-die-tabelle-t15767.html
+\makeatletter
+\newcommand\LastLTentrywidth{1em}
+\newlength\longtablewidth
+\setlength{\longtablewidth}{1in}
+\newcommand{\getlongtablewidth}{\begingroup \ifcsname LT@\roman{LT@tables}\endcsname \global\longtablewidth=0pt \renewcommand{\LT@entry}[2]{\global\advance\longtablewidth by ##2\relax\gdef\LastLTentrywidth{##2}}\@nameuse{LT@\roman{LT@tables}} \fi \endgroup}
+
 
 
 % Use ref for internal links
@@ -71,7 +107,7 @@ $if(csl-refs)$
 \newlength{\csllabelwidth}
 \setlength{\csllabelwidth}{3em}
 \newlength{\cslhangindent}
-\setlength{\cslhangindent}{1.5em}
+\setlength{\cslhangindent}{36pt}
 % for Pandoc 2.8 to 2.10.1
 \newenvironment{cslreferences}%
   {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
@@ -134,16 +170,32 @@ $endfor$
 
 \usepackage{titlesec}
 
+
+% DE change heading styles here
+
 \titleformat{\chapter}[display]
   {\normalsize\bfseries\filcenter}{\chaptertitlename\ \thechapter}{20pt}{\normalsize}
 \titlespacing*{\chapter}
   {0pt}{0pt}{20pt}
 
-\titleformat*{\section}{\normalsize\bfseries}
-\titleformat*{\subsection}{\normalsize\bfseries}
-\titleformat*{\subsubsection}{\normalsize\bfseries}
-\titleformat*{\paragraph}{\normalsize\bfseries}
-\titleformat*{\subparagraph}{\normalsize\bfseries}
+\titleformat{\section}{\normalfont\normalsize\bfseries\filcenter}{\thesection}{1em}{} %2# 
+
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{1em}{} %3# 
+
+\titleformat{\subsubsection}[runin]{\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{} %4#
+\titlespacing{\subsubsection}
+  {36pt}{0pt}{10pt}
+
+\titleformat{\paragraph}[runin]{\normalfont\normalsize\bfseries\itshape}{\theparagraph}{1em}{}%5#
+\titlespacing{\paragraph}
+  {36pt}{0pt}{10pt}
+
+\titleformat{\subparagraph}[runin]{\normalfont\normalsize\itshape}{\thesubparagraph}{1em}{} %6#
+\titlespacing{\subparagraph}
+  {36pt}{0pt}{10pt}
+
+\usepackage{indentfirst}
+
 
 %%
 %% End Preamble
@@ -162,12 +214,13 @@ $if(title)$
 $endif$
 
 \raggedright
-\pagestyle{plain} % this removes page numbers from the frontmatter
 
+\setlength{\parindent}{36pt}
 
 $if(abstract)$
 \begin{abstract}
     $abstract$
+    
 \end{abstract}
 $endif$
 

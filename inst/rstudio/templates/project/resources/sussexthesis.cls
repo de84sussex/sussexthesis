@@ -25,7 +25,7 @@
 %
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{reedthesis}[2004/01/27 The Reed College Thesis Class]
+\ProvidesClass{sussexthesis}[2021/06/28 The University of Sussex Thesis Class]
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 \ProcessOptions\relax
 \LoadClass{book}
@@ -105,7 +105,7 @@
 % This gives us rules below the headers
 \AtBeginDocument{%
   \fancyhf{}
-  \fancyfoot[C]{\thepage}
+  \fancyhead[C]{\thepage}
 %  \fancyhead[RE]{\slshape \leftmark}
 %  \fancyhead[LO]{\slshape \rightmark}
 %	The above makes your headers in all caps. If you would like different headers, choose one of the following options (be sure to remove the % symbol from both the right and left headers):
@@ -138,7 +138,7 @@
 \let\RToldchapter\chapter
 \renewcommand{\chapter}{\if@openright\RTcleardoublepage
 		    \else\clearpage\fi
-		    \thispagestyle{plain}%
+		    \thispagestyle{fancy}%
 		    \global\@topnum\z@
 		    \@afterindentfalse
 		    \secdef\@chapter\@schapter}
@@ -184,13 +184,13 @@
 %\addtolength\topmargin{-\headheight}
 %addtolength\topmargin{-\headsep}
 
-\usepackage{geometry}
- \geometry{a4paper,
- left=4cm,
- top=2.5cm,
- right=2cm,
- bottom=4cm
- }
+%\usepackage{geometry}
+ %\geometry{a4paper,
+ %left=4cm,
+ %top=2.5cm,
+ %right=2cm,
+ %bottom=4cm
+ %}
 
 
 %\setlength{\oddsidemargin}{.6in}
@@ -315,3 +315,6 @@
 \newcommand{\Acknowledgements}[1]{\def\@Acknowledgements{#1}}
 \newcommand{\Declaration}[1]{\def\@Declaration{#1}}
 % End of CII add
+
+
+

@@ -15,12 +15,7 @@ knitr::opts_chunk$set(
 
 
 This project is based on Chester Ismay’s
-[thesisdown](https://github.com/ismayc/thesisdown) package. The thesis template is designed to be compatible with the requirements of the University of Sussex, and works best when knitting to pdf. 
-
-<!--Currently, the PDF and gitbook versions are fully-functional.  The word and epub versions are developmental. 
-
-Formatting can be done using [markdown](https://rmarkdown.rstudio.com/authoring_basics.html), and **R** code.-->
-
+[thesisdown](https://github.com/ismayc/thesisdown) package. The thesis template is designed to be compatible with the requirements of the University of Sussex, and currently only works when knitting to pdf. 
 
 ### Using sussexthesis
 
